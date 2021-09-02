@@ -1,5 +1,6 @@
 param vNetSettings object = {
   name: 'VNet1'
+  location: 'eastus'
   addressPrefixes: [
     {
       name: 'firstPrefix'
@@ -18,7 +19,28 @@ param vNetSettings object = {
   ]
 }
 
-output name string = vNetSettings.name
-output addressPrefix string = vNetSettings.addressPrefixes[0].addressPrefix
-output subnet1 string = vNetSettings.subnets[0].addressPrefix
-output subnet2 string = vNetSettings.subnets[1].addressPrefix
+resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
+  name: vNetSettings.name
+  location: vNetSettings.location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        vNetSettings.addressPrefixes[0].addressPrefix
+      ]
+    }
+    subnets: [
+      {
+        name: vNetSettings.subnets[0].name
+        properties: {
+          addressPrefix: vNetSettings.subnets[0].addressPrefix
+        }
+      }
+      {
+        name: vNetSettings.subnets[1].name
+        properties: {
+          addressPrefix: vNetSettings.subnets[1].addressPrefix
+        }
+      }
+    ]
+  }
+}
