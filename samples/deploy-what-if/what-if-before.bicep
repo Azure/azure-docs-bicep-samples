@@ -1,4 +1,4 @@
-resource vnet_001 'Microsoft.Network/virtualNetworks@2018-10-01' = {
+resource vnet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
   name: 'vnet-001'
   location: resourceGroup().location
   tags: {
