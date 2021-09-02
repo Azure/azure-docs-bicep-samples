@@ -1,14 +1,10 @@
-# Project
+# Bicep samples for documentation
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repo holds Bicep samples that are used with documentation.
 
-As the maintainer of this project, please make a few updates:
+The folder **syntax-samples** contains samples that are meant to demonstrate a feature of the language. The samples in this folder are not real-world examples. In most cases, the samples do not deploy an actual resource.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+The folder **samples** contains samples that address a scenario in the documentation. These samples are real-world examples and deploy resources.
 
 ## Contributing
 
