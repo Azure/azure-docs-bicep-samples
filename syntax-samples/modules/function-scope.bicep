@@ -1,6 +1,6 @@
 param managementGroupName string
 
-module  'module.bicep' = {
+module mgDeploy 'main.bicep' = {
   name: 'deployToMG'
   scope: managementGroup(managementGroupName)
 }
