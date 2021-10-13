@@ -1,5 +1,5 @@
 // deploy to different scope
-module <module-symbolic-name> '<path-to-file>' = {
+module <symbolic-name> '<path-to-file>' = {
   name: '<linked-deployment-name>'
   scope: <scope-object>
   params: {
