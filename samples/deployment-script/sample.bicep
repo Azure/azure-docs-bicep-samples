@@ -1,6 +1,6 @@
 param identity string
 param utcValue string = utcNow()
-param storageAccountName string = 'jgaostore'
+param storageAccountName string = 'mystore'
 
 resource runPowerShellInline 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runPowerShellInline'
