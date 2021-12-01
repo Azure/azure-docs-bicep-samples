@@ -7,7 +7,7 @@ resource runPowerShellInlineWithOutput 'Microsoft.Resources/deploymentScripts@20
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     scriptContent: '''
       param([string] $name)
       $output = "Hello {0}" -f $name

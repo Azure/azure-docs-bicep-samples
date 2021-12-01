@@ -113,7 +113,7 @@ resource createAddCertificate 'Microsoft.Resources/deploymentScripts@2020-10-01'
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     timeout: 'PT30M'
     arguments: ' -vaultName ${keyVaultName} -certificateName ${certificateName} -subjectName ${subjectName}'
     scriptContent: '''
