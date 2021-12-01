@@ -7,7 +7,7 @@ resource runPowerShellInlineWithOutput 'Microsoft.Resources/deploymentScripts@20
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     primaryScriptURI: 'https://raw.githubusercontent.com/Azure/azure-docs-bicep-samples/main/samples/deployment-script/inlineScript.ps1'
     arguments: '-name ${name}'
     timeout: 'PT1H'

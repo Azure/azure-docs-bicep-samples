@@ -7,7 +7,7 @@ resource scriptInTemplate1 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     timeout: 'PT1H'
     arguments: '-name \\"${name}\\"'
     scriptContent: '''
@@ -28,7 +28,7 @@ resource scriptInTemplate2 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     timeout: 'PT1H'
     arguments: '-textToEcho \\"${scriptInTemplate1.properties.outputs.text}\\"'
     scriptContent: '''

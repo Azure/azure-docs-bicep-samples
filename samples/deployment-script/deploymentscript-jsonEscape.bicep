@@ -33,7 +33,7 @@ resource runPowerShellInline 'Microsoft.Resources/deploymentScripts@2020-10-01' 
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: '1'
-    azPowerShellVersion: '5.0'
+    azPowerShellVersion: '6.4'
     arguments: '-tables ${apostrophe}${replace(string(tables), '"', '\\"')}${apostrophe}'
     scriptContent: '''
       param([string] $tables)
