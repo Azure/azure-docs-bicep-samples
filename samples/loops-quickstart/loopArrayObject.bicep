@@ -11,7 +11,7 @@ param storages array = [
 ]
 
 resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for storage in storages: {
-  name: '${storage.name}storage${uniqueString(resourceGroup().id)}'
+  name: '${storage.name}obj${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {
     name: storage.skuName
