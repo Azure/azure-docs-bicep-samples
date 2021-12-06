@@ -10,7 +10,3 @@ resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for i 
   }
   kind: 'StorageV2'
 }]
-
-output names array = [for i in range(0,storageCount) : {
-  name: createStorages[i].name
-} ]
