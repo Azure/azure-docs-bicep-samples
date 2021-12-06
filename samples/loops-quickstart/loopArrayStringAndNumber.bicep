@@ -5,7 +5,7 @@ param storageNames array = [
 ]
 
 resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for (name, i) in storageNames: {
-  name: '${i}${name}str${uniqueString(resourceGroup().id)}'
+  name: '${i}${name}${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {
     name: 'Standard_LRS'
