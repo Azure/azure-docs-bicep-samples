@@ -1,5 +1,5 @@
 param activityLogAlertName string = '${uniqueString(resourceGroup().id)}-alert'
-param actionGroupName string = 'testactiongroup'
+param actionGroupName string = 'adminactiongroup'
 
 resource actionGroup 'Microsoft.Insights/actionGroups@2021-09-01' existing = {
   name: actionGroupName

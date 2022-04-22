@@ -1,19 +1,18 @@
 param location string = resourceGroup().location
 param appPlanName string = '${uniqueString(resourceGroup().id)}asp'
 
+var appPlanSkuName = 'S1'
+
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: appPlanName
   location: location
   sku: {
-    name: 'S1'
-    tier: 'Standard'
-    size: 'S1'
-    family: 'S'
+    name: appPlanSkuName
     capacity: 1
   } 
 }
 
-resource scaleUpRule 'Microsoft.Insights/autoscalesettings@2021-05-01-preview' = {
+resource scaleOutRule 'Microsoft.Insights/autoscalesettings@2021-05-01-preview' = {
   name: appServicePlan.name
   location: location
   properties: {

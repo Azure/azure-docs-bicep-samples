@@ -1,6 +1,8 @@
 param actionGroupName string = 'On-Call Team'
 param location string = resourceGroup().location
 
+var actionGroupEmail = 'oncallteam@contoso.com'
+
 resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2021-09-01' = {
   name: actionGroupName
   location: location
@@ -10,7 +12,7 @@ resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2021-09-01' = {
     emailReceivers: [
       {
         name: actionGroupName
-        emailAddress: 'oncallteam@contoso.com'
+        emailAddress: actionGroupEmail
         useCommonAlertSchema: true
       }
     ] 
