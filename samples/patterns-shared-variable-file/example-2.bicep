@@ -2,7 +2,7 @@ param location string = resourceGroup().location
 
 var nsgName = 'MyNSG'
 
-var sharedRules = json(loadTextContent('./shared-rules.json')).securityRules
+var sharedRules = loadJsonContent('./shared-rules.json', 'securityRules')
 var customRules = [
   {
     name: 'Allow_Internet_HTTPS_Inbound'
@@ -20,7 +20,7 @@ var customRules = [
   }
 ]
 
-resource nsg 'Microsoft.Network/networkSecurityGroups@2020-05-01' = {
+resource nsg 'Microsoft.Network/networkSecurityGroups@2021-08-01' = {
   name: nsgName
   location: location
   properties: {
