@@ -1,6 +1,6 @@
 param location string = resourceGroup().location
 
-var nsgconfig = json(loadTextContent('nsg-security-rules.json'))
+var nsgconfig = loadJsonContent('nsg-security-rules.json')
 
 resource newNSG 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
   name: 'example-nsg'
