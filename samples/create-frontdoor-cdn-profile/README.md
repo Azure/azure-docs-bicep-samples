@@ -19,12 +19,12 @@ A sample module to create Azure FrontDoor CDN profile.
 ```
 
 1. Directory `base` contains base bicep files:
-   1. `diagnosticSettings.bicep` -> Create diagnostic settings to send Azure CDN Access Logs to Event Hub. This can further be consumed to Azure Data Explorer.
-   2. `routes.bicep` -> Create routes for CDN Profile
-   3. `rulesets.bicep` -> Create Default Rule Set that are required across all CDN Profile by a user.
-   4. `waf.bicep` -> Query `existing` WAF to be attached to CDN Profile as Security Policy.
-   5. 2. `main.bicep` -> Orchestrate around other files in bicep module and create CDN profile
-2. `profile/main.bicep` provide an abstracted view to user for creating multiple CDN profile.
+   1. `diagnosticSettings.bicep`: Create diagnostic settings to send Azure CDN Access Logs to Event Hub. This can further be consumed to Azure Data Explorer.
+   2. `routes.bicep`: Create routes for CDN Profile
+   3. `rulesets.bicep`: Create Rule Set that are required by CDN Profile.
+   4. `waf.bicep`: Query `existing` WAF that needs to be attached to CDN Profile as Security Policy.
+   5. `main.bicep`: Orchestrate around other files in base bicep module and create CDN profile
+2. `profile/main.bicep` provide an abstracted view to a user for creating CDN profile.
 3. `static.stg.bicep` calls `profile/main.bicep` to create a stage environment profile.
 
 ## Deployment
