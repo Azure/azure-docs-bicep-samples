@@ -166,7 +166,7 @@ module rulesets 'rulesets.bicep' = {
 
 
 @sys.description('Create Diagnostic Settings for Logs')
-module diagnostic_settings 'dignosticSettings.bicep' = {
+module diagnostic_settings 'diagnosticSettings.bicep' = {
   name: '${cdnProfileName}-monitoring-module'
   params: {
     cdnProfileName: cdn.name

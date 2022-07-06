@@ -54,7 +54,7 @@ resource drs_global_overwriteResponseHeaders_rule 'Microsoft.Cdn/profiles/rulese
     ]
     matchProcessingBehavior: 'Continue'
   }
-}
+} 
 
 output defaultRuleSets array = [
   {

@@ -2,7 +2,7 @@
 var wafPolicyName = 'EdgeFrontDoorCdnStageWAF'
 
 @sys.description('WAF resource group name')
-var wafResourceGroup  = 'wus-edge-afd-cdn-prod-waf-rg'
+var wafResourceGroup  = 'wus-edge-afd-cdn-stg-waf-rg'
 
 @sys.description('WAF Subsciption Id')
 var wafSubsciptionId = '9aab410b-0fc2-4ca4-9342-d81a962f1921'
@@ -56,7 +56,7 @@ var cdnProfileTags = {
 }
 
 module li_static_prod 'profile/main.bicep' = {
-  name: 'li-${envName}-${propertyName}'
+  name: 'afdcdn-${envName}-${propertyName}'
   params: {
     envName: envName
     propertyName: propertyName
