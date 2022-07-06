@@ -1,17 +1,17 @@
 @sys.description('Azure Frontdoor WAF Name')
-var wafPolicyName = 'EdgeFrontDoorCdnStageWAF'
+var wafPolicyName = 'FrontDoorCdnStageWAF'
 
 @sys.description('WAF resource group name')
-var wafResourceGroup  = 'wus-edge-afd-cdn-stg-waf-rg'
+var wafResourceGroup  = 'afd-cdn-stg-waf-rg'
 
 @sys.description('WAF Subsciption Id')
-var wafSubsciptionId = '9aab410b-0fc2-4ca4-9342-d81a962f1921'
+var wafSubsciptionId = '9aaxxxx0b-xxx-4ca4-xxxx-d81axxxx1921'
 
 
 @sys.description('Origin details')
 var origins = [
   {
-    hostname: 'static-src.linkedin.com'
+    hostname: 'static-src.example.com'
     originGroupName: 'static-src-origin-group'
     patternsToMatch: [
       '/*'
@@ -23,7 +23,7 @@ var origins = [
 @sys.description('Custom Domain Array')
 var customDomains = [
   {
-    hostname: 'static-example.licdn.com'
+    hostname: 'static.example.com'
   }
 ]  
 
@@ -43,19 +43,19 @@ var eventHubName = 'azureafdcdnlogs'
 var eventHubNamespace = 'cdnlog-eventhub'
 
 @sys.description('Event Hub Namespace Subscription Id.')
-var eventHubNamespaceSubscriptionId = '9aab410b-0fc2-4ca4-9342-d81a962f1921' 
+var eventHubNamespaceSubscriptionId = '9aaxxxx0b-xxx-4ca4-xxxx-d81axxxx1921' 
 
 @sys.description('Event Hub Namespace Resource Group')
-var eventHubNamespaceResourceGroup = 'wus-edge-cdn-prod-eventhub-rg'
+var eventHubNamespaceResourceGroup = 'afd-cdn-eventhub-rg'
 
 @sys.description('Tags to identify resource owner')
 var cdnProfileTags = {
-  cdnCiProperty: 'linkedin.static'
-  supportGroup: 'ask_orc@linkedin.com'
+  propertyName: 'static'
+  supportGroup: 'support@example.com'
   environment: envName
 }
 
-module li_static_prod 'profile/main.bicep' = {
+module cdn_profile 'profile/main.bicep' = {
   name: 'afdcdn-${envName}-${propertyName}'
   params: {
     envName: envName
