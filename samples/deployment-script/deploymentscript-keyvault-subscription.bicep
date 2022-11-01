@@ -4,7 +4,7 @@ targetScope = 'subscription'
 param projectName string
 
 @description('Specifies the Azure location where the key vault should be created.')
-param location string
+param location string = resourceGroup().location
 
 @description('Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.')
 @allowed([

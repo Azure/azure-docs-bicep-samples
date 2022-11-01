@@ -1,13 +1,14 @@
 param name string = '\\"John Dole\\"'
 param utcValue string = utcNow()
+param location string = resourceGroup().location
 
 resource runPowerShellInlineWithOutput 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runPowerShellInlineWithOutput'
-  location: resourceGroup().location
+  location: location
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '6.4'
+    azPowerShellVersion: '8.3'
     primaryScriptURI: 'https://raw.githubusercontent.com/Azure/azure-docs-bicep-samples/main/samples/deployment-script/inlineScript.ps1'
     arguments: '-name ${name}'
     timeout: 'PT1H'

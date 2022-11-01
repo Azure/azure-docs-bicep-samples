@@ -1,13 +1,14 @@
 param name string = 'John Dole'
 param utcValue string = utcNow()
+param location string = resourceGroup().location
 
 resource scriptInTemplate1 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'scriptInTemplate1'
-  location: resourceGroup().location
+  location: location
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '6.4'
+    azPowerShellVersion: '8.3'
     timeout: 'PT1H'
     arguments: '-name \\"${name}\\"'
     scriptContent: '''
@@ -24,7 +25,7 @@ resource scriptInTemplate1 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
 
 resource scriptInTemplate2 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'scriptInTemplate2'
-  location: resourceGroup().location
+  location: location
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue

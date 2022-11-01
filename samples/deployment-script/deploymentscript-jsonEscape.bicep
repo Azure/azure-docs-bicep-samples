@@ -1,3 +1,4 @@
+param location string = resourceGroup().location
 param tables object = {
   abc: [
     {
@@ -29,11 +30,11 @@ var apostrophe = '\''
 
 resource runPowerShellInline 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runPowerShellInline'
-  location: resourceGroup().location
+  location: location
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: '1'
-    azPowerShellVersion: '6.4'
+    azPowerShellVersion: '8.3'
     arguments: '-tables ${apostrophe}${replace(string(tables), '"', '\\"')}${apostrophe}'
     scriptContent: '''
       param([string] $tables)
