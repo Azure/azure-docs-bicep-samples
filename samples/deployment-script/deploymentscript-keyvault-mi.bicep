@@ -67,7 +67,7 @@ var contributorRoleDefinitionId = '/subscriptions/${subscription().subscriptionI
 
 resource managedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' = {
   name: identityName
-  location: resourceGroup().location
+  location: location
 }
 
 resource roleAssignment 'Microsoft.Authorization/roleAssignments@2021-04-01-preview' = {
@@ -121,7 +121,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
 
 resource createAddCertificate 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'createAddCertificate'
-  location: resourceGroup().location
+  location: location
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
@@ -131,7 +131,7 @@ resource createAddCertificate 'Microsoft.Resources/deploymentScripts@2020-10-01'
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '6.4'
+    azPowerShellVersion: '8.3'
     timeout: 'PT30M'
     arguments: ' -vaultName ${keyVaultName} -certificateName ${certificateName} -subjectName ${subjectName}'
     scriptContent: '''

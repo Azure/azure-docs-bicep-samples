@@ -1,9 +1,10 @@
 param identity string
 param utcValue string = utcNow()
+param location string = resourceGroup().location
 
 resource runBashWithOutputs 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runBashWithOutputs'
-  location: resourceGroup().location
+  location: location
   kind: 'AzureCLI'
   identity: {
     type: 'UserAssigned'
@@ -13,7 +14,7 @@ resource runBashWithOutputs 'Microsoft.Resources/deploymentScripts@2020-10-01' =
   }
   properties: {
     forceUpdateTag: utcValue
-    azCliVersion: '2.28.0'
+    azCliVersion: '2.40.0'
     timeout: 'PT30M'
     arguments: '\'foo\' \'bar\''
     environmentVariables: [

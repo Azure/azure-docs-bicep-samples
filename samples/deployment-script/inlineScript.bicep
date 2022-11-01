@@ -1,13 +1,14 @@
 param name string = '\\"John Dole\\"'
 param utcValue string = utcNow()
+param location string = resourceGroup().location
 
 resource runPowerShellInlineWithOutput 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runPowerShellInlineWithOutput'
-  location: resourceGroup().location
+  location: location
   kind: 'AzurePowerShell'
   properties: {
     forceUpdateTag: utcValue
-    azPowerShellVersion: '6.4'
+    azPowerShellVersion: '8.3'
     scriptContent: '''
       param([string] $name)
       $output = "Hello {0}" -f $name
