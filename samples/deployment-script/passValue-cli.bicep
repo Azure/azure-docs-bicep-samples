@@ -27,7 +27,14 @@ resource runBashWithOutputs 'Microsoft.Resources/deploymentScripts@2020-10-01' =
         secureValue: 'jDolePassword'
       }
     ]
-    scriptContent: 'result=$(az keyvault list); echo "arg1 is: $1"; echo "arg2 is: $2"; echo "Username is :$Username"; echo "Password is: $Password"; echo $result | jq -c \'{Result: map({id: .id})}\' > $AZ_SCRIPTS_OUTPUT_PATH'
+    scriptContent: '''
+result=$(az keyvault list)
+echo "arg1 is: $1"
+echo "arg2 is: $2"
+echo "Username is: $Username"
+echo "Password is: $Password"
+echo $result | jq -c '{Result: map({id: .id})}' > $AZ_SCRIPTS_OUTPUT_PATH'
+'''
     cleanupPreference: 'OnSuccess'
     retentionInterval: 'P1D'
   }
