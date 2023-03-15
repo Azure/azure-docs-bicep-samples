@@ -1,0 +1,45 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+
+variables:
+- name: ProductName.AzureConnection.Name
+  value: 'SET A SERVICE CONNECTION'
+- name: ProductName.Subscription.Id
+  value: 'SET A SUBSCRIPTION ID'
+- name: ProductName.ResourceGroup.Name
+  value: 'RESOURCE GROUP NAME'
+- name: ProductName.Resources.Location
+  value: 'LOCATION'
+
+
+stages:
+- stage: Lint
+  jobs:
+  - job:
+    displayName: Lint Code
+    steps:
+    - script: |
+        az bicep build --file 'PATH TO A SPECIFIC PRODUCT ENVIRONMENT'
+
+- stage:
+  jobs:
+  - job: deploy_infrastructure
+  
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Infrastructure'
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: '$(ProductName.AzureConnection.Name)'
+        subscriptionId: '$(ProductName.Subscription.Id)'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: '$(ProductName.ResourceGroup.Name)'
+        location: '$(ProductName.Resources.Location)'
+        templateLocation: 'Linked artifact'
+        csmFile: 'PATH TO A BICEP FILE '
+        csmParametersFile: 'PATH TO A JSON PARAMETER FILE'
+        deploymentMode: 'Incremental'
+        deploymentName: '$(Build.BuildNumber)'
