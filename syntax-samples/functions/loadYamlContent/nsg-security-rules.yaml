@@ -1,0 +1,9 @@
+description: "Allows SSH traffic"
+protocol: "Tcp"
+sourcePortRange: "*"
+destinationPortRange: "22"
+sourceAddressPrefix: "*"
+destinationAddressPrefix: "*"
+access: "Allow"
+priority: 100
+direction: "Inbound"
