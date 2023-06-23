@@ -1,4 +1,4 @@
-resource storage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource storage 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: 'examplestorage'
   location: resourceGroup().location
   kind: 'StorageV2'
