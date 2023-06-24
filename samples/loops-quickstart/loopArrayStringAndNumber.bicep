@@ -4,7 +4,7 @@ param storageNames array = [
   'fabrikam'
 ]
 
-resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for (name, i) in storageNames: {
+resource createStorages 'Microsoft.Storage/storageAccounts@2022-09-01' = [for (name, i) in storageNames: {
   name: '${i}${name}${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {

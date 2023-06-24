@@ -40,13 +40,13 @@ module allTenantResources 'all-tenant-resources.bicep' = {
 }
 
 // Shared Azure SQL logical server.
-resource sqlServer 'Microsoft.Sql/servers@2021-05-01-preview' = {
+resource sqlServer 'Microsoft.Sql/servers@2022-11-01-preview' = {
   name: sqlServerName
   location: location
 }
 
 // Shared Front Door resources
-resource frontDoorProfile 'Microsoft.Cdn/profiles@2020-09-01' = {
+resource frontDoorProfile 'Microsoft.Cdn/profiles@2023-05-01' = {
   name: frontDoorProfileName
   location: 'global'
   sku: {
@@ -54,7 +54,7 @@ resource frontDoorProfile 'Microsoft.Cdn/profiles@2020-09-01' = {
   }
 }
 
-resource frontDoorEndpoint 'Microsoft.Cdn/profiles/afdEndpoints@2020-09-01' = {
+resource frontDoorEndpoint 'Microsoft.Cdn/profiles/afdEndpoints@2023-05-01' = {
   name: frontDoorEndpointName
   parent: frontDoorProfile
   location: 'global'
@@ -64,7 +64,7 @@ resource frontDoorEndpoint 'Microsoft.Cdn/profiles/afdEndpoints@2020-09-01' = {
   }
 }
 
-resource frontDoorOriginGroup 'Microsoft.Cdn/profiles/originGroups@2020-09-01' = {
+resource frontDoorOriginGroup 'Microsoft.Cdn/profiles/originGroups@2023-05-01' = {
   name: frontDoorOriginGroupName
   parent: frontDoorProfile
   properties: {
@@ -81,7 +81,7 @@ resource frontDoorOriginGroup 'Microsoft.Cdn/profiles/originGroups@2020-09-01' =
   }
 }
 
-resource frontDoorOrigin 'Microsoft.Cdn/profiles/originGroups/origins@2020-09-01' = {
+resource frontDoorOrigin 'Microsoft.Cdn/profiles/originGroups/origins@2023-05-01' = {
   name: frontDoorOriginName
   parent: frontDoorOriginGroup
   properties: {
@@ -93,7 +93,7 @@ resource frontDoorOrigin 'Microsoft.Cdn/profiles/originGroups/origins@2020-09-01
   }
 }
 
-resource frontDoorRoute 'Microsoft.Cdn/profiles/afdEndpoints/routes@2020-09-01' = {
+resource frontDoorRoute 'Microsoft.Cdn/profiles/afdEndpoints/routes@2023-05-01' = {
   name: frontDoorRouteName
   parent: frontDoorEndpoint
   dependsOn: [

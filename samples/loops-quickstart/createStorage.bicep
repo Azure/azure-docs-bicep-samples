@@ -1,6 +1,6 @@
 param rgLocation string = resourceGroup().location
 
-resource createStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
+resource createStorage 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {
