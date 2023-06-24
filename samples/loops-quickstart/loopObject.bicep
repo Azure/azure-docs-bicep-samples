@@ -11,7 +11,7 @@ param storageConfig object = {
   }
 }
 
-resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for config in items(storageConfig): {
+resource createStorages 'Microsoft.Storage/storageAccounts@2022-09-01' = [for config in items(storageConfig): {
   name: '${config.value.name}${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {

@@ -25,7 +25,7 @@ var subnetsToCreate = [for item in subnets: {
 }]
 var nsgAllowRdpName = 'nsg-allow-rdp'
 
-resource nsgAllowRdp 'Microsoft.Network/networkSecurityGroups@2019-11-01' = {
+resource nsgAllowRdp 'Microsoft.Network/networkSecurityGroups@2022-11-01' = {
   name: nsgAllowRdpName
   location: location
   properties: {
@@ -48,7 +48,7 @@ resource nsgAllowRdp 'Microsoft.Network/networkSecurityGroups@2019-11-01' = {
   }
 }
 
-resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
+resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-11-01' = {
   name: virtualNetworkName
   location: location
   properties: {

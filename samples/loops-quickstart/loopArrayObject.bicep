@@ -10,7 +10,7 @@ param storages array = [
   }
 ]
 
-resource createStorages 'Microsoft.Storage/storageAccounts@2021-06-01' = [for storage in storages: {
+resource createStorages 'Microsoft.Storage/storageAccounts@2022-09-01' = [for storage in storages: {
   name: '${storage.name}obj${uniqueString(resourceGroup().id)}'
   location: rgLocation
   sku: {

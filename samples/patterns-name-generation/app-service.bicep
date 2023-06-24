@@ -3,7 +3,7 @@ param environmentName string
 param appServiceAppName string = 'app-contoso-${environmentName}-${uniqueString(resourceGroup().id)}'
 param appServicePlanName string = 'plan-contoso-${environmentName}-${uniqueString(resourceGroup().id)}'
 
-resource appServiceApp 'Microsoft.Web/sites@2018-11-01' = {
+resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
   name: appServiceAppName
   // ...
   location: location
@@ -12,7 +12,7 @@ resource appServiceApp 'Microsoft.Web/sites@2018-11-01' = {
   }
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appServicePlanName
   // ...
   location: location

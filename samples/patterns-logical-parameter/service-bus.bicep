@@ -9,7 +9,7 @@ param queueNames array = [
 
 var deadLetterFirehoseQueueName = 'deadletterfirehose'
 
-resource serviceBusNamespace 'Microsoft.ServiceBus/namespaces@2018-01-01-preview' = {
+resource serviceBusNamespace 'Microsoft.ServiceBus/namespaces@2022-10-01-preview' = {
   name: serviceBusNamespaceName
   location: location
   sku: {
@@ -17,7 +17,7 @@ resource serviceBusNamespace 'Microsoft.ServiceBus/namespaces@2018-01-01-preview
   }
 }
 
-resource deadLetterFirehoseQueue 'Microsoft.ServiceBus/namespaces/queues@2018-01-01-preview' = {
+resource deadLetterFirehoseQueue 'Microsoft.ServiceBus/namespaces/queues@2022-10-01-preview' = {
   name: deadLetterFirehoseQueueName
   parent: serviceBusNamespace
   properties: {
@@ -27,7 +27,7 @@ resource deadLetterFirehoseQueue 'Microsoft.ServiceBus/namespaces/queues@2018-01
   }
 }
 
-resource queues 'Microsoft.ServiceBus/namespaces/queues@2018-01-01-preview' = [for queueName in queueNames: {
+resource queues 'Microsoft.ServiceBus/namespaces/queues@2022-10-01-preview' = [for queueName in queueNames: {
   parent: serviceBusNamespace
   name: queueName
   dependsOn: [
