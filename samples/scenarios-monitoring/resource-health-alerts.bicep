@@ -11,7 +11,7 @@ resource resourceHealthAlert 'Microsoft.Insights/activityLogAlerts@2020-10-01' =
   properties: {
     condition: {
       allOf: [
-        { 
+        {
           field: 'category'
           equals: 'ServiceHealth'
         }

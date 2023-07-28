@@ -3,14 +3,14 @@ param appPlanName string = '${uniqueString(resourceGroup().id)}asp'
 
 var appPlanSkuName = 'S1'
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appPlanName
   location: location
   properties: {}
   sku: {
     name: appPlanSkuName
     capacity: 1
-  } 
+  }
 }
 
 resource scaleOutRule 'Microsoft.Insights/autoscalesettings@2022-10-01' = {

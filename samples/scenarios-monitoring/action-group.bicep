@@ -3,7 +3,7 @@ param location string = resourceGroup().location
 
 var actionGroupEmail = 'oncallteam@contoso.com'
 
-resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2021-09-01' = {
+resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = {
   name: actionGroupName
   location: location
   properties: {
@@ -15,6 +15,6 @@ resource supportTeamActionGroup 'Microsoft.Insights/actionGroups@2021-09-01' = {
         emailAddress: actionGroupEmail
         useCommonAlertSchema: true
       }
-    ] 
+    ]
   }
 }
