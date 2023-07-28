@@ -1,4 +1,4 @@
 {
-    "storageAccountPrefix": "stg",
-    "appServicePrefix": "app"
+  "storageAccountPrefix": "stg",
+  "appServicePrefix": "app"
 }
