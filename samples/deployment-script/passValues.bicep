@@ -13,10 +13,10 @@ resource scriptInTemplate1 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
     arguments: '-name \\"${name}\\"'
     scriptContent: '''
       param([string] $name)
-      $output = \'Hello {0}\' -f $name
+      $output = 'Hello {0}' -f $name
       Write-Output $output
       $DeploymentScriptOutputs = @{}
-      $DeploymentScriptOutputs[\'text\'] = $output
+      $DeploymentScriptOutputs['text'] = $output
     '''
     cleanupPreference: 'Always'
     retentionInterval: 'P1D'
@@ -36,7 +36,7 @@ resource scriptInTemplate2 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
       param([string] $textToEcho)
       Write-Output $textToEcho
       $DeploymentScriptOutputs = @{}
-      $DeploymentScriptOutputs[\'text\'] = $textToEcho
+      $DeploymentScriptOutputs['text'] = $textToEcho
     '''
     cleanupPreference: 'Always'
     retentionInterval: 'P1D'
