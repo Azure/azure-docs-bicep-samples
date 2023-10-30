@@ -13,4 +13,12 @@ resource storage 'Microsoft.Storage/storageAccounts@2022-09-01' = {
       name: 'exampleshare'
     }
   }
+  
+  //Or create several blob containers
+  resource service 'blobServices' = {
+    name: 'default'
+    resource container 'containers@2021-04-01' = [for name in containerNames: {
+      name: name
+    }]
+  }
 }
