@@ -2,6 +2,17 @@ param identity string
 param utcValue string = utcNow()
 param location string = resourceGroup().location
 
+var storageAccountName = 'ds${uniqueString(resourceGroup().id)}'
+
+resource dsStorage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: storageAccountName
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
 resource runBashWithOutputs 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'runBashWithOutputs'
   location: location
@@ -14,6 +25,10 @@ resource runBashWithOutputs 'Microsoft.Resources/deploymentScripts@2020-10-01' =
   }
   properties: {
     forceUpdateTag: utcValue
+    storageAccountSettings: {
+      storageAccountName: dsStorage.name
+      storageAccountKey: dsStorage.listKeys().keys[0].value
+    }
     azCliVersion: '2.40.0'
     timeout: 'PT30M'
     arguments: '\'foo\' \'bar\''
